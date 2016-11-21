@@ -33,5 +33,6 @@ public final class Constraints {
 	//Group service address
 	public static final String GROUP_SERVICE_URL = "https://developer.sapjam.com/api/v1/OData/Groups";
 	
-	
+	//JAM Address
+	public static final String JAM_COMMUNICATION_URL = "https://developer.sapjam.com";
 }

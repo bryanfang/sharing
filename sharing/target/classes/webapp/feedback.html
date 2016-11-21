@@ -1,31 +1,56 @@
+<#assign base=request.contextPath />
 <html>
 <head>
+<base id="base" href="${base}">
 <meta charset="UTF-8">
-<script type="text/javascript" src="jquery/jquery.min.js"></script>
-<script type="text/javascript" src="bootstrap-table/bootstrap-table.js"></script>
+<script type="text/javascript" src="${base}/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="${base}/bootstrap-table/bootstrap-table.js"></script>
+<script type="text/javascript" src="${base}/bootstrap/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="bootstrap-table/bootstrap-table.min.css" />
-<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" href="style/cscstyle.css" />
+	href="${base}/bootstrap-table/bootstrap-table.min.css" />
+<link rel="stylesheet" href="${base}/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="${base}/style/cscstyle.css" />
 <title>CSC Share Session Rewards System</title>
 </head>
 <body>
-	<div class="bg-primary p-y-3 section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 p-y-3 text-xs-center">
-					<h1 class="display-2 m-y-2  ">Sharing Rewards</h1>
-					<p class="lead  ">We can use this system to record the score of
-						each share session, and mark the best shareholders as well.</p>
-					<i
-						class="center-block fa fa-5x fa-clock-o fa-fw m-y-2 text-inverse"></i>
-				</div>
+	<nav class="navbar navbar-default bg-primary" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="${base}">Home</a>
 			</div>
-			<div class="row">
-				
+			<div>
+				<p class="navbar-text navbar-left"><a href="${base}/myscore">My Score</a></p>
+				<p class="navbar-text navbar-left"><a href="${base}/myrewards">My Rewards</a></p>
+				<p class="navbar-text navbar-left"><a href="${base}/myfeedback">Feedback</a></p>
+				<p class="navbar-text navbar-left"><a href="${base}/best">Best Wall</a></p>
+				<!--向右对齐-->
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">${user}<b class="caret"></b>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="${base}/myprofile">My Profile</a></li>
+							<li><a href="${base}/logout">JAM</a></li>
+						</ul></li>
+				</ul>
+				<p class="navbar-text navbar-right">Welcome</p>
 			</div>
 		</div>
-	</div>
+	</nav>
+	<!-- 	<div class="bg-primary p-y-3 section"> -->
+	<!-- 		<div class="container"> -->
+	<!-- 			<div class="row"> -->
+	<!-- 				<div class="col-lg-12 p-y-3 text-xs-center"> -->
+	<!-- 					<h1 class="display-2 m-y-2  ">Sharing Rewards</h1> -->
+	<!-- 					<p class="lead  ">We can use this system to record the score of -->
+	<!-- 						each share session, and mark the best shareholders as well.</p> -->
+	<!-- 					<i -->
+	<!-- 						class="center-block fa fa-5x fa-clock-o fa-fw m-y-2 text-inverse"></i> -->
+	<!-- 				</div> -->
+	<!-- 			</div> -->
+	<!-- 			<div class="row"></div> -->
+	<!-- 		</div> -->
+	<!-- 	</div> -->
 
 	<div class="p-y-3 section">
 		<div class="container">
@@ -119,7 +144,7 @@
 								</button>
 							</div>
 							<table id="memembers_table" class="table" data-toggle="table"
-								data-url="mock/data.json" data-method="get"
+								data-url="${base}/mock/data.json" data-method="get"
 								data-query-params="queryParams" data-toolbar="#toolbar"
 								data-pagination="true" data-search="true"
 								data-show-refresh="true" data-show-toggle="true"

@@ -1,6 +1,6 @@
 package com.cscsharing.controller;
-import javax.security.auth.login.LoginContext;
-import javax.security.auth.login.LoginException;
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -10,11 +10,14 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.cscsharing.service.JAMService;
-import com.sap.security.auth.login.LoginContextFactory;
+import com.cscsharing.utils.Constraints;
+import com.sap.security.um.service.UserManagementAccessor;
+import com.sap.security.um.user.UnsupportedUserAttributeException;
+import com.sap.security.um.user.User;
+import com.sap.security.um.user.UserProvider;
 
 @Controller
 public class CoreController {
@@ -23,11 +26,6 @@ public class CoreController {
 	@Autowired
 	private JAMService jamService;
 	
-    @RequestMapping("/layout")
-    public String layout() {
-        return "layout";
-    }
-    
     @RequestMapping("/")
     public String index(@RequestParam("id") String id, 
     		HttpServletRequest request,
@@ -37,13 +35,13 @@ public class CoreController {
     	logger.debug("post id is: " + id);
     	session.setAttribute("postId", id);
     	session.setAttribute("user", user);
-    	return "redirect:reward";
+    	return "redirect:myfeedback";
     }
     
-    @RequestMapping("/reward")
+    @RequestMapping("/myfeedback")
     public String rewards(){
     	logger.debug("Redirect to rewards.html page.");
-    	return "rewards";
+    	return "feedback";
     }
     
     @RequestMapping(value="/allmembers")
@@ -53,34 +51,43 @@ public class CoreController {
     	return mockJsonData;
     }
     
-    @RequestMapping(value="/userinfor")
-    public String user(){
-    	return "user";
-    }
-    
-    @RequestMapping(value={"/user/info"}, method = RequestMethod.GET)
-	public @ResponseBody String index(HttpServletRequest request,
-			HttpServletResponse response){
-		String user = request.getRemoteUser();
-		if(user != null){
-			return "Hello: "+ user;
-		}
-		else{
-			LoginContext loginContext;
-			try{
-				loginContext = LoginContextFactory.createLoginContext("FORM");
-				loginContext.login();
-				return "Hello: " + request.getRemoteUser();
-			}catch (LoginException e) {
-				e.printStackTrace();
-			}
-		}
-		return "error";
-	}
-    
     @RequestMapping(value="/getAllGroups")
     public @ResponseBody String getAllGroups() {
     	return jamService.getAllGroups();
     }
     
+    @RequestMapping(value="/myprofile")
+    public String myProfile(HttpServletRequest request) throws UnsupportedUserAttributeException{
+    	User user = this.getUserInfor(request);
+    	request.setAttribute("id", request.getUserPrincipal().getName());
+    	request.setAttribute("firstName", user.getAttribute("firstname"));
+    	request.setAttribute("lastName", user.getAttribute("lastname"));
+		request.setAttribute("email", user.getAttribute("email"));
+    	return "profile";
+    }
+    
+    //JUST used for retrieve user information
+    private User getUserInfor(HttpServletRequest request){
+    	User user = null;
+    	if(request.getUserPrincipal() != null){
+    		try {
+    			UserProvider userProvider = UserManagementAccessor.getUserProvider();
+    			user = userProvider.getUser(request.getUserPrincipal().getName());
+    		}catch(Exception e){
+    			logger.debug(e.getMessage());
+    		}
+    	}
+    	return user;
+    }
+    
+    @RequestMapping("/logout")
+    public void logout(HttpServletRequest request, HttpServletResponse response){
+    	request.getSession().invalidate();
+    	try {
+			response.sendRedirect(Constraints.JAM_COMMUNICATION_URL);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
 }

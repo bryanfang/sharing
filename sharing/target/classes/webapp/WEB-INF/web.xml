@@ -3,6 +3,12 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
+	<!-- This configuration is used for retrieving user information from SCI -->
+	<resource-ref>
+		<res-ref-name>user/Provider</res-ref-name>
+		<res-type>com.sap.security.um.user.UserProvider</res-type>
+	</resource-ref>
+	
 	<!-- This resource configuration is essential to deploy on HCP -->
 	<resource-ref>
 		<res-ref-name>jdbc/DefaultDB</res-ref-name>

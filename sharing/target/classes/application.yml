@@ -23,6 +23,10 @@ spring:
     content-type: text/html; charset=utf-8
     template-loader-path: classpath:/webapp/
     suffix: .html
+    expose-spring-macro-helpers: true
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: request
   datasource:
     jndi-name: java:comp/env/jdbc/DefaultDB
   jpa:
@@ -48,6 +52,11 @@ spring:
     content-type: text/html; charset=utf-8
     template-loader-path: classpath:/webapp/
     suffix: .html
+    expose-spring-macro-helpers: true
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: request
+    
      
 ---
 spring:
