@@ -1,0 +1,55 @@
+# Server settings (ServerProperties)
+server:
+  port: 35081
+  address: 127.0.0.1
+  session:
+    timeout: 30
+  contextPath: /
+
+# Tomcat specifics
+  tomcat:
+    accesslog:
+      enabled: true
+    protocolHeader: x-forwarded-proto
+    remoteIpHeader: x-forwarded-for
+    basedir:
+    backgroundProcessorDelay: 30 # secs
+---
+# Specific for production environment
+spring:
+  profiles: prod
+  freemarker:
+    cache: false
+    content-type: text/html; charset=utf-8
+    template-loader-path: classpath:/webapp/
+    suffix: .html
+  datasource:
+    jndi-name: java:comp/env/jdbc/DefaultDB
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+---
+# Spring specifics for development environment
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/cscshare?createDatabaseIfNotExist=true
+    username: root
+    password: admin
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  freemarker:
+    cache: false
+    content-type: text/html; charset=utf-8
+    template-loader-path: classpath:/webapp/
+    suffix: .html
+     
+---
+spring:
+  profiles:
+    active: dev
