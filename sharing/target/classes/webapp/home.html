@@ -1,0 +1,172 @@
+<#assign base=request.contextPath />
+<html>
+<head>
+<base id="base" href="${base}">
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css"
+	href="${base}/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="${base}/circliful/css/jquery.circliful.css" />
+<link rel="stylesheet" type="text/css" href="${base}/style/cscstyle.css" />
+<link rel="shortcut icon" href="${base}/images/favicon.ico"
+	type="image/x-icon" />
+<script type="text/javascript" src="${base}/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="${base}/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="${base}/circliful/js/jquery.circliful.min.js"></script>
+<title>My Rewards</title>
+</head>
+<body>
+	<nav class="navbar navbar-default bg-primary" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="${base}/home">Home</a>
+			</div>
+			<div>
+				<p class="navbar-text navbar-left">
+					<a href="${base}/myfeedback">Feedback</a>
+				</p>
+				<p class="navbar-text navbar-left">
+					<a href="${base}/myrewards">Me</a>
+				</p>
+
+				<!--向右对齐-->
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">${viewModel.user}<b class="caret"></b>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="${base}/myprofile">My Profile</a></li>
+							<li><a href="${base}/logout">JAM</a></li>
+						</ul></li>
+				</ul>
+				<p class="navbar-text navbar-right">Welcome</p>
+			</div>
+		</div>
+	</nav>
+	<!-- Measurement section start -->
+	<div class="p-y-3 section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="display-3 m-y-2 text-xs-center text-primary">Measurement</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4">
+					<i
+						class="center-block fa fa-5x fa-fw m-y-2 text-primary fa-compass"></i>
+					<div class="panel panel-default">
+						<div class="panel-heading">Monthly Best</div>
+						<div class="panel-body">Lorem ipsum dolor sit amet,
+							consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+							Aenean massa. Cum sociis natoque penatibus et magnis dis
+							parturient montes, nascetur ridiculus mus. Donec quam felis,
+							ultricies nec, pellentesque eu, pretium quis, sem.</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<i
+						class="center-block fa fa-5x fa-fw m-y-2 text-primary fa-clock-o"></i>
+					<div class="panel panel-default">
+						<div class="panel-heading">Quarterly Best</div>
+						<div class="panel-body">Lorem ipsum dolor sit amet,
+							consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+							Aenean massa. Cum sociis natoque penatibus et magnis dis
+							parturient montes, nascetur ridiculus mus. Donec quam felis,
+							ultricies nec, pellentesque eu, pretium quis, sem.</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<i
+						class="center-block fa fa-5x fa-fw m-y-2 text-primary fa-cloud-upload"></i>
+					<div class="panel panel-default">
+						<div class="panel-heading">Yearly Best</div>
+						<div class="panel-body">Lorem ipsum dolor sit amet,
+							consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+							Aenean massa. Cum sociis natoque penatibus et magnis dis
+							parturient montes, nascetur ridiculus mus. Donec quam felis,
+							ultricies nec, pellentesque eu, pretium quis, sem.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Measurement section end -->
+	<div class="bg-faded p-y-3 section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="display-3 m-y-2 text-xs-center text-primary">Top
+						Rewards</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="card m-y-lg">
+						<div class="card-block text-xs-center bg-info">
+							<h2 class="card-title">Monthly Best Sharer</h2>
+							<h3 class="">Jhone Wan</h3>
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">Spring MVC</li>
+							<li class="list-group-item">Spring Data</li>
+							<li class="list-group-item">Spring IoC</li>
+						</ul>
+						<div class="card-block text-xs-center">
+							<a href="#" class="btn btn-block btn-primary">Subscribe</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="card m-y-lg">
+						<div class="card-block text-xs-center bg-info">
+							<h2 class="card-title">Quarterly Best Sharer</h2>
+							<h3 class="">James Hardon</h3>
+						</div>
+						<ul class="list-group list-group-flush ">
+							<li class="list-group-item">UI5 Design</li>
+							<li class="list-group-item">UI5 User Experience</li>
+							<li class="list-group-item">UI5 Walk through</li>
+						</ul>
+						<div class="card-block text-xs-center">
+							<a href="#" class="btn btn-block btn-primary">Subscribe</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="card m-y-lg">
+						<div class="card-block text-xs-center bg-info">
+							<h2 class="card-title">Yearly Best Sharer</h2>
+							<h3 class="">Stephen, Curry</h3>
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">HANA Database</li>
+							<li class="list-group-item">XS Development</li>
+							<li class="list-group-item">HANA Cloud Integration</li>
+						</ul>
+						<div class="card-block text-xs-center">
+							<a href="#" class="btn btn-block btn-primary">Subscribe</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-4">
+				<address class="m-y-3 text-xs-center">
+					<strong>JAM Extension Application for Feedback Support</strong> <br>Cloud
+					Service Center - Chengdu <br>bryan.fang@sap.com<br> <abbr
+						title="Phone">P:</abbr>(+86) 28 85295163
+				</address>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

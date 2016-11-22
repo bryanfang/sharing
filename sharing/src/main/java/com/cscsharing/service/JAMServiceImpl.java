@@ -1,5 +1,6 @@
 package com.cscsharing.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -11,6 +12,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import com.cscsharing.jampojo.Events;
 import com.cscsharing.jampojo.Member;
 import com.cscsharing.utils.Constraints;
 import com.cscsharing.utils.Formatter;
@@ -51,7 +54,7 @@ public class JAMServiceImpl implements JAMService {
 		creator.setNickname(creatorResult.getString("Nickname"));
 		creator.setTitle(creatorResult.getString("Title"));
 		creator.setEmail(creatorResult.getString("Email"));
-		creator.setFullName(creatorResult.getString("Fullname"));
+		creator.setFullName(creatorResult.getString("FullName"));
 		creator.setRole(creatorResult.getString("Role"));
 		creator.setFollowing(creatorResult.getBoolean("IsFollowing"));
 		creator.setWebURL(creatorResult.getString("WebURL"));
@@ -79,6 +82,67 @@ public class JAMServiceImpl implements JAMService {
 	public String getAllGroups() {
 		// TODO Auto-generated method stub
 		return this.getJAMInforByURL(Constraints.GROUP_SERVICE_URL);
+	}
+
+	@Override
+	public Events getEventByEventId(String eventId) {
+		// TODO Auto-generated method stub
+		String events = this.getJAMInforByURL(Constraints.BASE_SERVICE_URL + "Events('" + eventId + "')");
+		JSONObject evtObj = Formatter.convertToJSON(events);
+		Events evt = new Events();
+		evt.setDescription(evtObj.getString("Description"));
+		evt.setAllDay(evtObj.getBoolean("AllDay"));
+		evt.setId(eventId);
+		evt.setName(evtObj.getString("Name"));
+		Date createdAt = Formatter.convertToDate(evtObj.getString("CreatedAt"));
+		Date lastModifiedAt = Formatter.convertToDate(evtObj.getString("LastModifiedAt"));
+		Date startAt = Formatter.convertToDate(evtObj.getString("startAt"));
+		Date endAt = Formatter.convertToDate(evtObj.getString("EndAt"));	
+		evt.setCreatedAt(createdAt);
+		evt.setLastModifiedAt(lastModifiedAt);
+		evt.setStartAt(startAt);
+		evt.setEndAt(endAt);
+		evt.setLocation(evtObj.getString("Location"));
+		evt.setPriority(evtObj.getString("Priority"));
+		evt.setLiked(evtObj.getBoolean("Liked"));
+		evt.setLikesCount(evtObj.getInt("LikesCount"));
+		evt.setFeedCommentsCount(evtObj.getInt("FeedCommentsCount"));
+		return evt;
+	}
+
+	/**
+	 * Get the duration type by start time and end time
+	 * 1 - 0.5 hr
+	 * 2 - 1 hr
+	 * 3 - 2 hr
+	 * 4 - 4 hr
+	 * 5 - 1 day
+	 */
+	@Override
+	public int getDurationTypeByEventId(String eventId) {
+		// TODO Auto-generated method stub
+		Events evt = this.getEventByEventId(eventId);
+		if(evt.isAllDay()) {
+			return 5;
+		}
+		else{
+			long duration = evt.getEndAt().getTime() - evt.getStartAt().getTime(); //mms
+			long durations = duration/1000; //seconds
+			long durationm = durations/60; //minutes
+			if(durationm <= 30) {
+				return 1;
+			}
+			else if (duration > 30 && duration <= 60) {
+				return 2;
+			}
+			else if (duration > 60 && duration <= 120) {
+				return 3;
+			}
+			else if (duration > 120 && duration <= 240) {
+				return 4;
+			}
+		}
+		return 0;
 	}
 
 }

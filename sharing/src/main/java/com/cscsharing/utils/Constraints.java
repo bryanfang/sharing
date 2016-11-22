@@ -35,4 +35,21 @@ public final class Constraints {
 	
 	//JAM Address
 	public static final String JAM_COMMUNICATION_URL = "https://developer.sapjam.com";
+	
+	//Session Type and bonus rate for configuration
+	public static final double ST_P = 1;  //Only has presentation
+	public static final double ST_PD = 1.10;  //Presentation and Demo
+	public static final double ST_PH = 1.20;  //Presentation and Hands-on
+	
+	//valid feedback threshold
+	public static final double SERVY_RATE_THRESHOLD = 0.2;  //when reach 20%, consider to be valid
+	
+	//Feedback bonus rate
+	public static final double FB_FIRST_LEVEL = 1.5;  //4.8 ~ 5
+	public static final double FB_SECOND_LEVEL = 1.2; //4.5 ~ 4.79
+	
+	//Default score for giving participant 
+	public static final int DEFAULT_SCORE_P = 2;
+	public static final int DEFAULT_ENTITLED = 5;
+	
 }

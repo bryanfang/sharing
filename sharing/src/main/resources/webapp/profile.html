@@ -12,31 +12,28 @@
 	href="${base}/bootstrap-table/bootstrap-table.min.css" />
 <link rel="stylesheet" href="${base}/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="${base}/style/cscstyle.css" />
+<link rel="shortcut icon" href="${base}/images/favicon.ico"
+	type="image/x-icon" />
 <title>CSC Share Session Rewards System</title>
 </head>
 <body>
-	<nav class="navbar navbar-default bg-primary" role="navigation">
+		<nav class="navbar navbar-default bg-primary" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="${base}">Home</a>
 			</div>
 			<div>
 				<p class="navbar-text navbar-left">
-					<a href="${base}/myscore">My Score</a>
-				</p>
-				<p class="navbar-text navbar-left">
-					<a href="${base}/myrewards">My Rewards</a>
-				</p>
-				<p class="navbar-text navbar-left">
 					<a href="${base}/myfeedback">Feedback</a>
 				</p>
 				<p class="navbar-text navbar-left">
-					<a href="${base}/best">Best Wall</a>
+					<a href="${base}/myrewards">Me</a>
 				</p>
+				
 				<!--向右对齐-->
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">${user}<b class="caret"></b>
+						data-toggle="dropdown">${viewModel.user}<b class="caret"></b>
 					</a>
 						<ul class="dropdown-menu">
 							<li><a href="${base}/myprofile">My Profile</a></li>
@@ -47,31 +44,36 @@
 			</div>
 		</div>
 	</nav>
+	
 	<div class="container">
 		<ul class="list-group">
 			<li class="list-group-item">
 				<h4 class="list-group-item-heading">User ID</h4>
 				<p class="list-group-item-text">${id}</p>
 			</li>
-			<li class="list-group-item"><h4 class="list-group-item-heading">First Name</h4>
+			<li class="list-group-item"><h4 class="list-group-item-heading">First
+					Name</h4>
 				<p class="list-group-item-text">${firstName}</p></li>
-			<li class="list-group-item"><h4 class="list-group-item-heading">Last Name</h4>
+			<li class="list-group-item"><h4 class="list-group-item-heading">Last
+					Name</h4>
 				<p class="list-group-item-text">${lastName}</p></li>
-			<li class="list-group-item"><h4 class="list-group-item-heading">Email Address</h4>
+			<li class="list-group-item"><h4 class="list-group-item-heading">Email
+					Address</h4>
 				<p class="list-group-item-text">${email}</p></li>
 		</ul>
 	</div>
-	<div class="bg-info p-y-0 section">
-		<div class="container">
+
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+		<div class="navbar-inner navbar-content-center">
 			<div class="row">
-				<div class="col-lg-12">
+				<div class="col-md-6 col-md-offset-4">
 					<address class="m-y-3 text-xs-center">
-						<strong>Application Support</strong> <br>CSC Chengdu <br>bryan.fang@sap.com<br>
+						<strong>JAM Extension Application for Feedback Support</strong> <br>Cloud Service C Chengdu <br>bryan.fang@sap.com<br>
 						<abbr title="Phone">P:</abbr>(+86) 28 85295163
 					</address>
 				</div>
 			</div>
 		</div>
-	</div>
+	</nav>
 </body>
 </html>

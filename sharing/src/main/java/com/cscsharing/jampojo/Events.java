@@ -23,11 +23,12 @@ public class Events {
 	private String description;
 	private Date createdAt;
 	private Date lastModifiedAt;
+	private Date startAt;
 	private Date endAt;
 	private boolean allDay;
 	private String location;
 	private String priority;
-	private String training;
+	private String category;
 	private boolean liked;
 	private int likesCount;
 	private int feedCommentsCount;
@@ -52,8 +53,8 @@ public class Events {
 	public Date getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
+	public void setCreatedAt(Date string) {
+		this.createdAt = string;
 	}
 	public Date getLastModifiedAt() {
 		return lastModifiedAt;
@@ -85,12 +86,6 @@ public class Events {
 	public void setPriority(String priority) {
 		this.priority = priority;
 	}
-	public String getTraining() {
-		return training;
-	}
-	public void setTraining(String training) {
-		this.training = training;
-	}
 	public boolean isLiked() {
 		return liked;
 	}
@@ -108,5 +103,17 @@ public class Events {
 	}
 	public void setFeedCommentsCount(int feedCommentsCount) {
 		this.feedCommentsCount = feedCommentsCount;
+	}
+	public Date getStartAt() {
+		return startAt;
+	}
+	public void setStartAt(Date startAt) {
+		this.startAt = startAt;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
 	}
 }

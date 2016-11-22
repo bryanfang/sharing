@@ -2,6 +2,7 @@ package com.cscsharing.service;
 
 import java.util.List;
 
+import com.cscsharing.jampojo.Events;
 import com.cscsharing.jampojo.Member;
 
 public interface JAMService {
@@ -9,4 +10,6 @@ public interface JAMService {
 	public List<Member> getMembersByGroupId(String groupId);
 	public String getGroupInforByEventId(String eventId);
 	public String getAllGroups();
+	public Events getEventByEventId(String eventId);
+	public int getDurationTypeByEventId(String eventId);
 }

@@ -1,5 +1,7 @@
 package com.cscsharing.utils;
 
+import java.util.Date;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import net.sf.json.JSONObject;
@@ -16,5 +18,9 @@ public class Formatter {
 		String results = jsonObject.getString("results");
 		jsonObject = JSONObject.fromObject(results);
 		return jsonObject;
+	}
+	
+	public static Date convertToDate(String dateStr){
+		return new Date(Integer.parseInt(dateStr.substring(5, 18)));
 	}
 }
