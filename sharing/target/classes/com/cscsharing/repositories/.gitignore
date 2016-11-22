@@ -1,3 +1,6 @@
 /RewardsHistory.class
 /ScoreHistory.class
 /UserEntity.class
+/ScoreEventPrimaryKey.class
+/UserEventPrimaryKey.class
+/PersonalScore.class

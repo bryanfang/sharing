@@ -1,5 +1,6 @@
 package com.cscsharing.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import com.cscsharing.jampojo.Member;
 import com.cscsharing.utils.Constraints;
 import com.cscsharing.utils.Formatter;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 @Service
@@ -143,6 +145,20 @@ public class JAMServiceImpl implements JAMService {
 			}
 		}
 		return 0;
+	}
+
+	@Override
+	public List<Member> getInviteesByEventId(String eventId) {
+		// TODO Auto-generated method stub
+		String inviteesURL = Constraints.BASE_SERVICE_URL + "Events('" + eventId+"')/Invitees";
+		String invitessResult = this.getJAMInforByURL(inviteesURL);
+		JSONArray invitees = Formatter.convertToJSONArray(invitessResult);
+		List<Member> inviteeList = new ArrayList<Member>();
+		for(int i = 0; i < invitees.size(); i++) {
+			Member m = new Member();
+			inviteeList.add(m);
+		}
+		return inviteeList;
 	}
 
 }

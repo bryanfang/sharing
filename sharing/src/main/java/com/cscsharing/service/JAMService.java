@@ -12,4 +12,5 @@ public interface JAMService {
 	public String getAllGroups();
 	public Events getEventByEventId(String eventId);
 	public int getDurationTypeByEventId(String eventId);
+	public List<Member> getInviteesByEventId(String eventId);
 }
