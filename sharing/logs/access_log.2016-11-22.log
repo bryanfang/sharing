@@ -1,0 +1,14 @@
+127.0.0.1 - - [22/Nov/2016:09:53:42 +0800] "GET /myfeedback HTTP/1.1" 500 341
+127.0.0.1 - - [22/Nov/2016:09:58:21 +0800] "GET /myfeedback HTTP/1.1" 500 341
+127.0.0.1 - - [22/Nov/2016:10:16:32 +0800] "GET /myfeedback HTTP/1.1" 200 10029
+127.0.0.1 - - [22/Nov/2016:10:16:33 +0800] "GET /bootstrap/js/bootstrap.min.js HTTP/1.1" 404 144
+127.0.0.1 - - [22/Nov/2016:10:16:33 +0800] "GET /bootstrap-table/bootstrap-table.min.css HTTP/1.1" 404 154
+127.0.0.1 - - [22/Nov/2016:10:16:33 +0800] "GET /bootstrap/css/bootstrap.min.css HTTP/1.1" 404 146
+127.0.0.1 - - [22/Nov/2016:10:16:33 +0800] "GET /style/cscstyle.css HTTP/1.1" 404 133
+127.0.0.1 - - [22/Nov/2016:10:16:33 +0800] "GET /bootstrap-table/bootstrap-table.js HTTP/1.1" 404 149
+127.0.0.1 - - [22/Nov/2016:10:16:33 +0800] "GET /jquery/jquery.min.js HTTP/1.1" 404 135
+127.0.0.1 - - [22/Nov/2016:10:16:33 +0800] "GET /bootstrap/js/bootstrap.min.js HTTP/1.1" 404 144
+127.0.0.1 - - [22/Nov/2016:10:16:33 +0800] "GET /bootstrap-table/bootstrap-table.min.css HTTP/1.1" 404 154
+127.0.0.1 - - [22/Nov/2016:10:16:33 +0800] "GET /bootstrap/css/bootstrap.min.css HTTP/1.1" 404 146
+127.0.0.1 - - [22/Nov/2016:10:16:33 +0800] "GET /style/cscstyle.css HTTP/1.1" 404 133
+127.0.0.1 - - [22/Nov/2016:10:16:33 +0800] "GET /images/favicon.ico HTTP/1.1" 404 133

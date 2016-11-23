@@ -47,122 +47,78 @@
 				<div class="col-lg-12">
 					<div class="row-fluid">
 						<div class="span12">
-							<h3>${viewModel.description} - ${viewModel.creator}</h3>
 							<form>
 								<fieldset>
-									<legend>Your Voice is important</legend>
-									<label for="name">a. The objectives of the training were clearly defined.?</label>
+									<legend>Your Feedback about ${viewModel.description} - ${viewModel.creator}</legend>
+									<label for="name">a. The objectives of the training were clearly defined?</label>
 									<div class="radio">
 										<label><input name="objective" type="radio" value="1" />1</label>
-									</div>
-									<div class="radio">
 										<label><input name="objective" type="radio" value="2" />2</label>
-									</div>
-									<div class="radio">
 										<label><input name="objective" type="radio" value="3" />3</label>
-									</div>
-									<div class="radio">
 										<label><input name="objective" type="radio" value="4" />4</label>
-									</div>
-									<div class="radio">
 										<label><input name="objective" type="radio" value="5" />5</label>
 									</div>
 
 									<br /> <label for="name">b.	Participation and interaction were encouraged?</label>
 									<div class="radio">
 										<label><input name="encouraged" type="radio" value="1" />1</label>
-									</div>
-									<div class="radio">
 										<label><input name="encouraged" type="radio" value="2" />2</label>
-									</div>
-									<div class="radio">
 										<label><input name="encouraged" type="radio" value="3" />3</label>
-									</div>
-									<div class="radio">
 										<label><input name="encouraged" type="radio" value="4" />4</label>
-									</div>
-									<div class="radio">
 										<label><input name="encouraged" type="radio" value="5" />5</label>
 									</div>
 									
 									<br /> <label for="name">c.	The content was organized and easy to follow?</label>
 									<div class="radio">
 										<label><input name="easy" type="radio" value="1" />1</label>
-									</div>
-									<div class="radio">
 										<label><input name="easy" type="radio" value="2" />2</label>
-									</div>
-									<div class="radio">
 										<label><input name="easy" type="radio" value="3" />3</label>
-									</div>
-									<div class="radio">
 										<label><input name="easy" type="radio" value="4" />4</label>
-									</div>
-									<div class="radio">
 										<label><input name="easy" type="radio" value="5" />5</label>
 									</div>
 									
 									<br /> <label for="name">d.	The trainer was knowledgeable about the training topics?</label>
 									<div class="radio">
 										<label><input name="knowledgeable" type="radio" value="1" />1</label>
-									</div>
-									<div class="radio">
 										<label><input name="knowledgeable" type="radio" value="2" />2</label>
-									</div>
-									<div class="radio">
 										<label><input name="knowledgeable" type="radio" value="3" />3</label>
-									</div>
-									<div class="radio">
 										<label><input name="knowledgeable" type="radio" value="4" />4</label>
-									</div>
-									<div class="radio">
 										<label><input name="knowledgeable" type="radio" value="5" />5</label>
 									</div>
-									
 
 									<br /> <label for="name">e.	The trainer was well prepared?</label>
 									<div class="radio">
 										<label><input name="preparation" type="radio" value="1" />1</label>
-									</div>
-									<div class="radio">
 										<label><input name="preparation" type="radio" value="2" />2</label>
-									</div>
-									<div class="radio">
 										<label><input name="preparation" type="radio" value="3" />3</label>
-									</div>
-									<div class="radio">
 										<label><input name="preparation" type="radio" value="4" />4</label>
-									</div>
-									<div class="radio">
 										<label><input name="preparation" type="radio" value="5" />5</label>
 									</div>
 									
 									<br /> <label for="name">f.	The time allotted for the training was sufficient and efficient.</label>
 									<div class="radio">
 										<label><input name="time" type="radio" value="1" />1</label>
-									</div>
-									<div class="radio">
 										<label><input name="time" type="radio" value="2" />2</label>
-									</div>
-									<div class="radio">
 										<label><input name="time" type="radio" value="3" />3</label>
-									</div>
-									<div class="radio">
 										<label><input name="time" type="radio" value="4" />4</label>
-									</div>
-									<div class="radio">
 										<label><input name="time" type="radio" value="5" />5</label>
 									</div>
+									
 									<br />
 									<button type="submit" class="btn btn-primary">Submit</button>
 								</fieldset>
 							</form>
 						</div>
 					</div>
-					<div class="row-fluid">
+					<div class="row-fluid" id="speakerfeed">
 						<div class="span12">
 							<h3>Please give score to every participants</h3>
-							
+							<table>
+							<th><td>User Name</td><td>Register</td><td>Honored Student</td></th>
+							<#list sequence as item>
+    							<tr><td>${item.name}</td><td><input type="checkbox" /></td><td><input type="checkbox" /></td></tr>
+							</#list>
+							</table>
 						</div>
 					</div>
 				</div>

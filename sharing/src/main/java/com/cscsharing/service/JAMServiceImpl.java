@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.cscsharing.jampojo.Events;
+import com.cscsharing.jampojo.Group;
 import com.cscsharing.jampojo.Member;
 import com.cscsharing.utils.Constraints;
 import com.cscsharing.utils.Formatter;
@@ -68,16 +69,47 @@ public class JAMServiceImpl implements JAMService {
 	@Override
 	public List<Member> getMembersByGroupId(String groupId) {
 		// TODO Auto-generated method stub
-		return null;
+		List<Member> members = new ArrayList<Member>();
+		String memberURL = Constraints.BASE_SERVICE_URL + "Groups('"+ groupId + "')/Memberships";
+		String memberResult = this.getJAMInforByURL(memberURL);
+		JSONArray memberArr = Formatter.convertToJSONArray(memberResult);
+		for(int i = 0; i < memberArr.size(); i++){
+			JSONObject member = memberArr.getJSONObject(i);
+			if(null != member && member.containsKey("MemberId")) {
+				String memberId = member.getString("MemberId");
+				String memberInforURL = Constraints.BASE_SERVICE_URL + "Members('"+ memberId + "')";
+				String memberInforResult = this.getJAMInforByURL(memberInforURL);
+				JSONObject memberInfor = Formatter.convertToJSON(memberInforResult);
+				if(memberInfor != null) {
+					Member memberEntity = new Member();
+					memberEntity.setId(memberInfor.getString("Id"));
+					memberEntity.setFirstName(memberInfor.getString("FirstName"));
+					memberEntity.setLastName(memberInfor.getString("LastName"));
+					memberEntity.setNickname(memberInfor.get("Nickname"));
+					memberEntity.setTitle(memberInfor.getString("Title"));
+					memberEntity.setEmail(memberInfor.getString("Email"));
+					memberEntity.setFullName(memberInfor.getString("FullName"));
+					memberEntity.setRole(memberInfor.getString("Role"));
+					memberEntity.setFollowing(memberInfor.getBoolean("IsFollowing"));
+					memberEntity.setWebURL(memberInfor.getString("WebURL"));
+					memberEntity.setIsAway(memberInfor.getBoolean("IsAway"));
+					members.add(memberEntity);
+				}
+			}
+		}
+		return members;
 	}
 
 	
 	@Override
-	public String getGroupInforByEventId(String eventId) {
+	public Group getGroupInforByEventId(String eventId) {
 		// TODO Auto-generated method stub
 		String groupURL = Constraints.BASE_SERVICE_URL + "Events('"+eventId+"')/Group";
 		String groupData = this.getJAMInforByURL(groupURL);
-		return groupData;
+		JSONObject groupObj = Formatter.convertToJSON(groupData);
+		Group group = new Group();
+		group.setId(groupObj.getString("Id"));
+		return group;
 	}
 
 	@Override
@@ -98,7 +130,7 @@ public class JAMServiceImpl implements JAMService {
 		evt.setName(evtObj.getString("Name"));
 		Date createdAt = Formatter.convertToDate(evtObj.getString("CreatedAt"));
 		Date lastModifiedAt = Formatter.convertToDate(evtObj.getString("LastModifiedAt"));
-		Date startAt = Formatter.convertToDate(evtObj.getString("startAt"));
+		Date startAt = Formatter.convertToDate(evtObj.getString("StartAt"));
 		Date endAt = Formatter.convertToDate(evtObj.getString("EndAt"));	
 		evt.setCreatedAt(createdAt);
 		evt.setLastModifiedAt(lastModifiedAt);

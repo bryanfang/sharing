@@ -15,7 +15,7 @@ public class Member {
 	private String id;
 	private String firstName;
 	private String lastName;
-	private String nickname;
+	private Object nickname;
 	private String title;
 	private String email;
 	private String fullName;
@@ -41,11 +41,11 @@ public class Member {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getNickname() {
+	public Object getNickname() {
 		return nickname;
 	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setNickname(Object object) {
+		this.nickname = object;
 	}
 	public String getTitle() {
 		return title;

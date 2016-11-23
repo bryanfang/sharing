@@ -33,6 +33,6 @@ public class Formatter {
 	}
 	
 	public static Date convertToDate(String dateStr){
-		return new Date(Integer.parseInt(dateStr.substring(5, 18)));
+		return new Date(Long.parseLong(dateStr.substring(6, 19)));
 	}
 }
