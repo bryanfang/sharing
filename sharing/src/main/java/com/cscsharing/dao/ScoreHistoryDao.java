@@ -17,4 +17,8 @@ public interface ScoreHistoryDao extends JpaRepository<ScoreHistory, Long> {
 	//Get the total score of one member
 	@Query(value = "SELECT SUM(sh.timeMember+sh.QAMemeber+sh.comments+sh.bestAnswer+sh.newQuestion) FROM ScoreHistory sh WHERE sh.memberId = ?1", nativeQuery = true)
 	float getMemberScoreByMemberId(String memberId);
+	
+	ScoreHistory findByLoginUserIdAndEventId(String loginUserId, String eventId);
+	
+	ScoreHistory findByLoginUserIdAndEventIdAndMemberId(String loginUserId, String eventId, String memberId);
 }

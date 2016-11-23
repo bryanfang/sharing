@@ -49,7 +49,7 @@ public final class Constraints {
 	public static final double FB_SECOND_LEVEL = 1.2; //4.5 ~ 4.79
 	
 	//Default score for giving participant 
-	public static final int DEFAULT_SCORE_P = 2;
-	public static final int DEFAULT_ENTITLED = 5;
+	public static final int DEFAULT_SCORE_PARTICIPANT = 2;
+	public static final int DEFAULT_HONORED = 5;
 	
 }

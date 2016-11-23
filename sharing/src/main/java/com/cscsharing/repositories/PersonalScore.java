@@ -3,10 +3,20 @@ package com.cscsharing.repositories;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="personalscore")
+@NamedQueries({
+	@NamedQuery(name="PersonalScore.findById",
+			query="select ps from PersonalScore ps where id=?1"),
+	@NamedQuery(name="PersonalScore.countById",
+			query="select count(ps) from PersonalScore ps where id=?1"),
+	@NamedQuery(name="PersonalScore.sumScoreById",
+			query="select sum(ps.score) from PersonalScore ps where id=?1")
+})
 public class PersonalScore {
 	private UserEventPrimaryKey id;
 	private double score;

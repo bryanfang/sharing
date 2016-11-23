@@ -103,7 +103,7 @@
 										<label><input name="time" type="radio" value="4" />4</label>
 										<label><input name="time" type="radio" value="5" />5</label>
 									</div>
-									
+									<input name="eventId" type="hidden" value="${viewModel.eventId}"/>
 									<br />
 									<button type="submit" class="btn btn-primary">Submit</button>
 								</fieldset>
@@ -119,6 +119,7 @@
     							<tr><td>${item.name}</td><td><input type="checkbox" /></td><td><input type="checkbox" /></td></tr>
 							</#list>
 							</table>
+							<input name="eventId" type="hidden" value="${viewModel.eventId}"/>
 						</div>
 					</div>
 				</div>
